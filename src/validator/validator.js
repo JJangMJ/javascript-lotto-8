@@ -45,3 +45,20 @@ export function validateDuplicateNumber(numbers) {
     throw new Error(ERROR_MESSAGES.CANNOT_BE_DUPLICATED);
   }
 }
+
+export function validateSingleNumberInput(input) {
+  const splittedInput = input
+    .split(",")
+    .map((number) => number.trim())
+    .filter((number) => number !== "");
+
+  if (splittedInput.length !== 1) {
+    throw new Error(ERROR_MESSAGES.SHOULD_BE_SINGLE_NUMBER);
+  }
+}
+
+export function validateBonusNotInWinningNumbers(bonusNumber, winningNumbers) {
+  if (winningNumbers.includes(bonusNumber)) {
+    throw new Error(ERROR_MESSAGES.CANNOT_BE_DUPLICATED_WITH_WINNING_NUMBER);
+  }
+}

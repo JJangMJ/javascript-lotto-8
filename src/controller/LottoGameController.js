@@ -2,7 +2,8 @@ import LottoMachine from "../domain/LottoMachine.js";
 import PurchaseAmount from "../domain/PurchaseAmount.js";
 import RandomLottoNumberGenerator from "../domain/RandomLottoNumberGenerator.js";
 import WinningNumbers from "../domain/WinningNumbers.js";
-import { parseWinningNumbers } from "../parser.js";
+import BonusNumber from "../domain/BonusNumber.js";
+import { parseWinningNumbers, parseBonusNumber } from "../parser.js";
 import InputView from "../view/InputView.js";
 import OutputView from "../view/OutputView.js";
 
@@ -17,7 +18,8 @@ class LottoGameController {
 
   async run() {
     const purchaseResult = await this.#purchaseLottos();
-    const WinningNumbers = await this.#generateWinningNumbers();
+    const winningNumbers = await this.#generateWinningNumbers();
+    const bonusNumber = await this.#generateBonusNumber(winningNumbers);
   }
 
   async #purchaseLottos() {
@@ -44,6 +46,18 @@ class LottoGameController {
         const input = await this.#inputView.inputWinningNumbers();
         const numbers = parseWinningNumbers(input);
         return new WinningNumbers(numbers);
+      } catch (error) {
+        this.#outputView.printErrorMessage(error.message);
+      }
+    }
+  }
+
+  async #generateBonusNumber(winningNumbers) {
+    while (true) {
+      try {
+        const input = await this.#inputView.inputBonusNumber();
+        const bonus = parseBonusNumber(input);
+        return new BonusNumber(bonus, winningNumbers);
       } catch (error) {
         this.#outputView.printErrorMessage(error.message);
       }

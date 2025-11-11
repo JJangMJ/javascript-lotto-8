@@ -11,6 +11,12 @@ class InputView {
     Console.print(PROMPT_MESSAGES.ASK_WINNING_NUMBERS);
     return await Console.readLineAsync("");
   }
+
+  async inputBonusNumber() {
+    Console.print("");
+    Console.print(PROMPT_MESSAGES.ASK_BONUS_NUMBER);
+    return await Console.readLineAsync("");
+  }
 }
 
 export default InputView;

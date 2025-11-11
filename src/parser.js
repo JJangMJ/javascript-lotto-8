@@ -4,6 +4,7 @@ import {
   validateNotBlank,
   validateNumberRange,
   validateDuplicateNumber,
+  validateSingleNumberInput,
 } from "./validator/validator.js";
 
 export function parseToInt(rawInput) {
@@ -43,4 +44,14 @@ export function parseWinningNumbers(input) {
   validateDuplicateNumber(numbers);
 
   return numbers;
+}
+
+export function parseBonusNumber(input) {
+  validateNotBlank(input);
+  validateSingleNumberInput(input);
+
+  const parsed = parseToInt(input);
+  validateNumberRange(parsed);
+
+  return parsed;
 }
