@@ -6,6 +6,11 @@ class InputView {
     Console.print(PROMPT_MESSAGES.ASK_PURCHASE_AMOUNT);
     return await Console.readLineAsync("");
   }
+
+  async inputWinningNumbers() {
+    Console.print(PROMPT_MESSAGES.ASK_WINNING_NUMBERS);
+    return await Console.readLineAsync("");
+  }
 }
 
 export default InputView;
