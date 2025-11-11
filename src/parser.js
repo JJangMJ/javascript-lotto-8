@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from "../constants/errorMessages.js";
+import { ERROR_MESSAGES } from "./constant/errorMessages.js"
 
 export function parseToInt(rawInput) {
   const trimmed = rawInput.trim();

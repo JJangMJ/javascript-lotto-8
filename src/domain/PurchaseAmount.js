@@ -1,5 +1,9 @@
-import { parseToInt } from "../parser";
-import { validateMultipleOfThousand, validateNotBlank, validatePositive } from "../validator/validator";
+import { parseToInt } from "../parser.js";
+import {
+  validateMultipleOfThousand,
+  validateNotBlank,
+  validatePositive,
+} from "../validator/validator.js";
 
 class PurchaseAmount {
   #purchaseAmount;
@@ -13,7 +17,7 @@ class PurchaseAmount {
     const parsedInput = parseToInt(input);
     validatePositive(parsedInput);
     validateMultipleOfThousand(parsedInput);
-    
+
     return new PurchaseAmount(parsedInput);
   }
 

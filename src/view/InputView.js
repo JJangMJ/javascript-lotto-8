@@ -3,7 +3,8 @@ import { PROMPT_MESSAGES } from "../constant/promptMessages.js";
 
 class InputView {
   async inputLottoPurchasePrice() {
-    return Console.readLineAsync(PROMPT_MESSAGES.ASK_PURCHASE_AMOUNT);
+    Console.print(PROMPT_MESSAGES.ASK_PURCHASE_AMOUNT);
+    return await Console.readLineAsync("");
   }
 }
 
