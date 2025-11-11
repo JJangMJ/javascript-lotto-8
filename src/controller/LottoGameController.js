@@ -20,6 +20,11 @@ class LottoGameController {
     const purchaseResult = await this.#purchaseLottos();
     const winningNumbers = await this.#generateWinningNumbers();
     const bonusNumber = await this.#generateBonusNumber(winningNumbers);
+    const winningStatistic = winningNumbers.getWinningStatistic(
+      purchaseResult,
+      bonusNumber
+    );
+    this.#outputView.printWinningStatistic(winningStatistic);
   }
 
   async #purchaseLottos() {
